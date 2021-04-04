@@ -1,0 +1,11 @@
+
+Buildroot toolchain RPM packages
+
+Here lie the configs and specs for the following buildroot toolchains:
+
+ - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-mipsel32-o32-uclibc/
+ - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-armv6el-eabi-uclibc/
+
+Toolchains include compiler & gdb, with static and shared libs (and sysroot with
+all the shared libs).
+
