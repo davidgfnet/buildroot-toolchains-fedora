@@ -3,7 +3,7 @@
 Name:           buildroot-armv6el-eabi-uclibc
 Epoch:          1
 Version:        1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Buildroot generated ARMv6el uClibc toolchain
 
 # Most of the sources are licensed under GPLv3+ with these exceptions:
@@ -52,6 +52,7 @@ cd buildroot-%{buildroot_ver} && %make_build
 export QA_RPATHS=$[ 0xFFFF ]
 mkdir -p %{buildroot}/opt
 cp -r buildroot-%{buildroot_ver}/output/host %{buildroot}/opt/buildroot-armv6el-eabi-uclibc
+cd %{buildroot}/opt/buildroot-armv6el-eabi-uclibc/ && ./bin/arm-linux-strip -d arm-buildroot-linux-uclibcgnueabi/sysroot/usr/lib/libc.a
 
 %files
 /opt/buildroot-armv6el-eabi-uclibc/*
