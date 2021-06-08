@@ -1,9 +1,9 @@
-%global buildroot_ver  2021.02
+%global buildroot_ver  2021.02.2
 
 Name:           buildroot-mipsel64-n32-uclibc
 Epoch:          1
-Version:        1.0
-Release:        2%{?dist}
+Version:        1.1
+Release:        1%{?dist}
 Summary:        Buildroot generated MIPSel32 uClibc toolchain
 
 # Most of the sources are licensed under GPLv3+ with these exceptions:
@@ -22,7 +22,7 @@ URL:            https://buildroot.org
 Source0:        https://buildroot.org/downloads/buildroot-%{buildroot_ver}.tar.bz2
 Source1:        mipsel64-n32.config
 
-BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue
+BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue perl-FindBin
 BuildRequires:	autoconf
 BuildRequires:	make ncurses-devel wget bc rsync
 BuildRequires:  gcc-c++
@@ -31,10 +31,6 @@ BuildRequires:  make
 Requires: glibc
 Requires: libgcc
 AutoReqProv: no
-
-%if 0%{?fedora} > 32
-BuildRequires:  perl-FindBin
-%endif
 
 %undefine _missing_build_ids_terminate_build
 %global debug_package %{nil}
@@ -63,6 +59,9 @@ cd %{buildroot}/opt/buildroot-mipsel64-n32-uclibc/ && ./bin/mips64el-linux-strip
 /opt/buildroot-mipsel64-n32-uclibc/*
 
 %changelog
+* Sat Jun 05 2021 David Guillen Fandos <david@davidgf.net> - 2021.06.05-1
+- Bump to buildroot 2021.02.2
+
 * Sun Mar 28 2021 David Guillen Fandos <david@davidgf.net> - 2021.03.28-1
 - First version
 

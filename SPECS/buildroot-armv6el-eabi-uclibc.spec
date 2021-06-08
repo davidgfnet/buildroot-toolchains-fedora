@@ -1,9 +1,9 @@
-%global buildroot_ver  2021.02
+%global buildroot_ver  2021.02.2
 
 Name:           buildroot-armv6el-eabi-uclibc
 Epoch:          1
-Version:        1.0
-Release:        2%{?dist}
+Version:        1.1
+Release:        1%{?dist}
 Summary:        Buildroot generated ARMv6el uClibc toolchain
 
 # Most of the sources are licensed under GPLv3+ with these exceptions:
@@ -22,7 +22,7 @@ URL:            https://buildroot.org
 Source0:        https://buildroot.org/downloads/buildroot-%{buildroot_ver}.tar.bz2
 Source1:        armv6el.config
 
-BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue
+BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue perl-FindBin
 BuildRequires:	autoconf
 BuildRequires:	make ncurses-devel wget bc rsync
 BuildRequires:  gcc-c++
@@ -58,6 +58,9 @@ cd %{buildroot}/opt/buildroot-armv6el-eabi-uclibc/ && ./bin/arm-linux-strip -d a
 /opt/buildroot-armv6el-eabi-uclibc/*
 
 %changelog
+* Sat Jun 05 2021 David Guillen Fandos <david@davidgf.net> - 2021.06.05-1
+- Bump to buildroot 2021.02.2
+
 * Sun Mar 28 2021 David Guillen Fandos <david@davidgf.net> - 2021.03.28-1
 - First version
 
