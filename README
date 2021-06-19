@@ -5,6 +5,7 @@ Here lie the configs and specs for the following buildroot toolchains:
 
  - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-mipsel32-o32-uclibc/
  - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-mipsel64-n32-uclibc/
+ - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-mipsel64-n64-uclibc/
  - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-armv6el-eabi-uclibc/
  - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-armv8-uclibc/
  - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-x86-64-muslc/
