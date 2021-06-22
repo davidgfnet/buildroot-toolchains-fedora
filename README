@@ -8,6 +8,7 @@ Here lie the configs and specs for the following buildroot toolchains:
  - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-mipsel64-n64-uclibc/
  - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-armv6el-eabi-uclibc/
  - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-armv8-uclibc/
+ - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-armv8be-uclibc/
  - https://copr.fedorainfracloud.org/coprs/davidgf/buildroot-x86-64-muslc/
 
 Toolchains include compiler & gdb, with static and shared libs (and sysroot with
