@@ -3,7 +3,7 @@
 Name:           buildroot-armv8be-uclibc
 Epoch:          1
 Version:        1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Buildroot generated ARMv8be uClibc toolchain
 
 # Most of the sources are licensed under GPLv3+ with these exceptions:
@@ -52,7 +52,14 @@ cd buildroot-%{buildroot_ver} && %make_build
 export QA_RPATHS=$[ 0xFFFF ]
 mkdir -p %{buildroot}/opt
 cp -r buildroot-%{buildroot_ver}/output/host %{buildroot}/opt/buildroot-armv8be-uclibc
-cd %{buildroot}/opt/buildroot-armv8be-uclibc/ && ./bin/aarch64_be-buildroot-linux-uclibc-strip -d aarch64_be-buildroot-linux-uclibc/sysroot/usr/lib/libc.a
+cd %{buildroot}/opt/buildroot-armv8be-uclibc/ && ./bin/aarch64_be-linux-strip -d aarch64_be-buildroot-linux-uclibc/sysroot/usr/lib/libc.a
+# Strip debug symbols from .so files in sysroot
+for f in `find %{buildroot}/opt/buildroot-armv8be-uclibc/aarch64_be-buildroot-linux-uclibc/sysroot -type f -name "*.so*"`;
+do
+  if file $f | grep "ELF" | grep "not stripped"; then
+    %{buildroot}/opt/buildroot-armv8be-uclibc/bin/aarch64_be-linux-strip -d $f
+  fi
+done
 
 %files
 /opt/buildroot-armv8be-uclibc/*

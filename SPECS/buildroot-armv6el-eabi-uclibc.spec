@@ -3,7 +3,7 @@
 Name:           buildroot-armv6el-eabi-uclibc
 Epoch:          1
 Version:        1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Buildroot generated ARMv6el uClibc toolchain
 
 # Most of the sources are licensed under GPLv3+ with these exceptions:
@@ -53,6 +53,13 @@ export QA_RPATHS=$[ 0xFFFF ]
 mkdir -p %{buildroot}/opt
 cp -r buildroot-%{buildroot_ver}/output/host %{buildroot}/opt/buildroot-armv6el-eabi-uclibc
 cd %{buildroot}/opt/buildroot-armv6el-eabi-uclibc/ && ./bin/arm-linux-strip -d arm-buildroot-linux-uclibcgnueabi/sysroot/usr/lib/libc.a
+# Strip debug symbols from .so files in sysroot
+for f in `find %{buildroot}/opt/buildroot-armv6el-eabi-uclibc/arm-buildroot-linux-uclibcgnueabi/sysroot -type f -name "*.so*"`;
+do
+  if file $f | grep "ELF" | grep "not stripped"; then
+    %{buildroot}/opt/buildroot-armv6el-eabi-uclibc/bin/arm-linux-strip -d $f
+  fi
+done
 
 %files
 /opt/buildroot-armv6el-eabi-uclibc/*

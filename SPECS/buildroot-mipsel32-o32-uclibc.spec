@@ -3,7 +3,7 @@
 Name:           buildroot-mipsel32-o32-uclibc
 Epoch:          1
 Version:        1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Buildroot generated MIPSel32 uClibc toolchain
 
 # Most of the sources are licensed under GPLv3+ with these exceptions:
@@ -53,6 +53,13 @@ export QA_RPATHS=$[ 0xFFFF ]
 mkdir -p %{buildroot}/opt
 cp -r buildroot-%{buildroot_ver}/output/host %{buildroot}/opt/buildroot-mipsel32-o32-uclibc
 cd %{buildroot}/opt/buildroot-mipsel32-o32-uclibc/ && ./bin/mipsel-linux-strip -d mipsel-buildroot-linux-uclibc/sysroot/usr/lib/libc.a
+# Strip debug symbols from .so files in sysroot
+for f in `find %{buildroot}/opt/buildroot-mipsel32-o32-uclibc/mipsel-buildroot-linux-uclibc/sysroot -type f -name "*.so*"`;
+do
+  if file $f | grep "ELF" | grep "not stripped"; then
+    %{buildroot}/opt/buildroot-mipsel32-o32-uclibc/bin/mipsel-linux-strip -d $f
+  fi
+done
 
 %files
 /opt/buildroot-mipsel32-o32-uclibc/*
