@@ -3,7 +3,7 @@
 Name:           buildroot-mipsel32-o32-uclibc
 Epoch:          1
 Version:        1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Buildroot generated MIPSel32 uClibc toolchain
 
 # Most of the sources are licensed under GPLv3+ with these exceptions:
