@@ -1,9 +1,9 @@
-%global buildroot_ver  2021.02.2
+%global buildroot_ver  2021.08
 
 Name:           buildroot-mipsel64-n32-uclibc
 Epoch:          1
-Version:        1.1
-Release:        2%{?dist}
+Version:        1.2
+Release:        1%{?dist}
 Summary:        Buildroot generated MIPSel32 uClibc toolchain
 
 # Most of the sources are licensed under GPLv3+ with these exceptions:
@@ -66,6 +66,9 @@ done
 /opt/buildroot-mipsel64-n32-uclibc/*
 
 %changelog
+* Sat Sep 18 2021 David Guillen Fandos <david@davidgf.net> - 2021.09.18-1
+- Bump to buildroot 2021.08
+
 * Sat Jun 05 2021 David Guillen Fandos <david@davidgf.net> - 2021.06.05-1
 - Bump to buildroot 2021.02.2
 
