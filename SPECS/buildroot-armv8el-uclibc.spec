@@ -1,9 +1,9 @@
-%global buildroot_ver  2021.08
+%global buildroot_ver  2021.08.1
 
 Name:           buildroot-armv8el-uclibc
 Epoch:          1
-Version:        1.2
-Release:        2%{?dist}
+Version:        1.3
+Release:        1%{?dist}
 Summary:        Buildroot generated ARMv8el uClibc toolchain
 
 # Most of the sources are licensed under GPLv3+ with these exceptions:
@@ -65,6 +65,9 @@ done
 /opt/buildroot-armv8el-uclibc/*
 
 %changelog
+* Sat Oct 09 2021 David Guillen Fandos <david@davidgf.net> - 2021.10.09-1
+- Bump to buildroot 2021.08.1 (and GCC 11)
+
 * Sat Sep 18 2021 David Guillen Fandos <david@davidgf.net> - 2021.09.18-1
 - Bump to buildroot 2021.08
 
