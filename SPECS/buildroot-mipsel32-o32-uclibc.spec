@@ -1,8 +1,8 @@
-%global buildroot_ver  2021.08.1
+%global buildroot_ver  2022.02.1
 
 Name:           buildroot-mipsel32-o32-uclibc
 Epoch:          1
-Version:        1.3
+Version:        1.4
 Release:        1%{?dist}
 Summary:        Buildroot generated MIPSel32 uClibc toolchain
 
@@ -19,7 +19,7 @@ Summary:        Buildroot generated MIPSel32 uClibc toolchain
 License:        GPLv2+ and GPLv3+ and LGPLv2+ and BSD
 URL:            https://buildroot.org
 
-Source0:        https://buildroot.org/downloads/buildroot-%{buildroot_ver}.tar.bz2
+Source0:        https://buildroot.org/downloads/buildroot-%{buildroot_ver}.tar.gz
 Source1:        mipsel32.config
 
 BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue perl-FindBin
@@ -65,6 +65,9 @@ done
 /opt/buildroot-mipsel32-o32-uclibc/*
 
 %changelog
+* Fri May 20 2022 David Guillen Fandos <david@davidgf.net> - 2022.05.20-1
+- Bump to buildroot 2022.02.1
+
 * Sat Oct 09 2021 David Guillen Fandos <david@davidgf.net> - 2021.10.09-1
 - Bump to buildroot 2021.08.1 (and GCC 11)
 
