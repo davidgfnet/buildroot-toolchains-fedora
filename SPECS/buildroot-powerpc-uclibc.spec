@@ -1,8 +1,8 @@
-%global buildroot_ver  2022.02.1
+%global buildroot_ver  2023.02
 
 Name:           buildroot-powerpc-uclibc
 Epoch:          1
-Version:        1.4
+Version:        1.5
 Release:        1%{?dist}
 Summary:        Buildroot generated PowerPC uClibc toolchain
 
@@ -22,7 +22,7 @@ URL:            https://buildroot.org
 Source0:        https://buildroot.org/downloads/buildroot-%{buildroot_ver}.tar.gz
 Source1:        powerpc.config
 
-BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue perl-FindBin
+BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue perl-FindBin perl-English
 BuildRequires:	autoconf
 BuildRequires:	make ncurses-devel wget bc rsync
 BuildRequires:  gcc-c++
@@ -65,6 +65,9 @@ done
 /opt/buildroot-powerpc-uclibc/*
 
 %changelog
+* Mon Apr 17 2023 David Guillen Fandos <david@davidgf.net> - 2023.04.17-1
+- Bump to buildroot 2023.02
+
 * Fri May 20 2022 David Guillen Fandos <david@davidgf.net> - 2022.05.20-1
 - Bump to buildroot 2022.02.1
 
