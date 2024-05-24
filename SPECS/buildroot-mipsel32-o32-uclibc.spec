@@ -1,8 +1,8 @@
-%global buildroot_ver  2023.02
+%global buildroot_ver  2024.02.2
 
 Name:           buildroot-mipsel32-o32-uclibc
 Epoch:          1
-Version:        1.5
+Version:        1.6
 Release:        1%{?dist}
 Summary:        Buildroot generated MIPSel32 uClibc toolchain
 
@@ -22,7 +22,7 @@ URL:            https://buildroot.org
 Source0:        https://buildroot.org/downloads/buildroot-%{buildroot_ver}.tar.gz
 Source1:        mipsel32.config
 
-BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue perl-FindBin perl-English
+BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue perl-FindBin perl-English perl-IPC-Cmd
 BuildRequires:	autoconf
 BuildRequires:	make ncurses-devel wget bc rsync
 BuildRequires:  gcc-c++
@@ -43,10 +43,12 @@ uClibc as libc and provides static and shared libraries. Support for C and C++
 
 %prep
 %setup -q -c
-cp %{SOURCE1} buildroot-%{buildroot_ver}/.config
+cd buildroot-%{buildroot_ver}
+cp %{SOURCE1} .config
 
 %build
-cd buildroot-%{buildroot_ver} && %make_build
+cd buildroot-%{buildroot_ver}
+%make_build
 
 %install
 export QA_RPATHS=$[ 0xFFFF ]
@@ -65,6 +67,9 @@ done
 /opt/buildroot-mipsel32-o32-uclibc/*
 
 %changelog
+* Wed May 22 2024 David Guillen Fandos <david@davidgf.net> - 2024.05.22-1
+- Bump to buildroot 2024.02.2
+
 * Mon Apr 17 2023 David Guillen Fandos <david@davidgf.net> - 2023.04.17-1
 - Bump to buildroot 2023.02
 
