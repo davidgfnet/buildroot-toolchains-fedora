@@ -1,0 +1,39 @@
+--- a/package/m4/m4.mk
++++ b/package/m4/m4.mk
+@@ -9,5 +9,6 @@
+ M4_SITE = $(BR2_GNU_MIRROR)/m4
+ M4_LICENSE = GPL-3.0+
+ M4_LICENSE_FILES = COPYING
++HOST_M4_CONF_ENV = CFLAGS="$(HOST_CFLAGS) -std=gnu17"
+ 
+ $(eval $(host-autotools-package))
+--- a/package/gmp/gmp.mk
++++ b/package/gmp/gmp.mk
+@@ -14,6 +14,7 @@
+ GMP_DEPENDENCIES = host-m4
+ HOST_GMP_DEPENDENCIES = host-m4
+ 
++HOST_GMP_CONF_ENV = CFLAGS="$(HOST_CFLAGS) -std=gnu17"
+ GMP_CONF_ENV += CC_FOR_BUILD="$(HOSTCC) -std=c99"
+ 
+ # GMP doesn't support assembly for coldfire or mips r6 ISA yet
+--- a/package/uclibc/uclibc.mk
++++ b/package/uclibc/uclibc.mk
+@@ -4,7 +4,7 @@
+ #
+ ################################################################################
+ 
+-UCLIBC_VERSION = 1.0.51
++UCLIBC_VERSION = 1.0.52
+ UCLIBC_SOURCE = uClibc-ng-$(UCLIBC_VERSION).tar.xz
+ UCLIBC_SITE = https://downloads.uclibc-ng.org/releases/$(UCLIBC_VERSION)
+ UCLIBC_LICENSE = LGPL-2.1+
+--- a/package/uclibc/uclibc.hash
++++ b/package/uclibc/uclibc.hash
+@@ -1,4 +1,4 @@
+-# From https://downloads.uclibc-ng.org/releases/1.0.51/uClibc-ng-1.0.51.tar.xz.sha256
+-sha256  3484c8c7a0503c08f7e5fa7473c987414050726f31e8593d02d984f512d1a0cb  uClibc-ng-1.0.51.tar.xz
++# From https://downloads.uclibc-ng.org/releases/1.0.52/uClibc-ng-1.0.52.tar.xz.sha256
++sha256  881da473784f95cc8290bb0780c0afc810ca28d575e33d5afd5e7153b29aa136  uClibc-ng-1.0.52.tar.xz
+ # Locally calculated
+ sha256  ec60b993835e2c6b79e6d9226345f4e614e686eb57dc13b6420c15a33a8996e5  COPYING.LIB

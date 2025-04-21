@@ -1,8 +1,8 @@
-%global buildroot_ver  2024.02.2
+%global buildroot_ver  2025.02
 
 Name:           buildroot-mipsel64-n64-uclibc
 Epoch:          1
-Version:        1.6
+Version:        1.7
 Release:        1%{?dist}
 Summary:        Buildroot generated MIPSel64 uClibc toolchain
 
@@ -21,6 +21,7 @@ URL:            https://buildroot.org
 
 Source0:        https://buildroot.org/downloads/buildroot-%{buildroot_ver}.tar.gz
 Source1:        mipsel64-n64.config
+Source2:        fixes-gcc15.patch
 
 BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue perl-FindBin perl-English perl-IPC-Cmd
 BuildRequires:	autoconf
@@ -45,6 +46,7 @@ libraries. Support for C and C++
 %prep
 %setup -q -c
 cd buildroot-%{buildroot_ver}
+patch -p1 < %{SOURCE2}
 cp %{SOURCE1} .config
 
 %build
@@ -68,6 +70,9 @@ done
 /opt/buildroot-mipsel64-n64-uclibc/*
 
 %changelog
+* Mon Apr 21 2025 David Guillen Fandos <david@davidgf.net> - 2025.04.21-1
+- Bump to buildroot 2025.02
+
 * Wed May 22 2024 David Guillen Fandos <david@davidgf.net> - 2024.05.22-1
 - Bump to buildroot 2024.02.2
 
