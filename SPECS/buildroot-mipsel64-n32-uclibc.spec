@@ -1,8 +1,8 @@
-%global buildroot_ver  2025.02
+%global buildroot_ver  2026.08
 
 Name:           buildroot-mipsel64-n32-uclibc
 Epoch:          1
-Version:        1.7
+Version:        1.8
 Release:        1%{?dist}
 Summary:        Buildroot generated MIPSel64 uClibc toolchain
 
@@ -21,19 +21,21 @@ URL:            https://buildroot.org
 
 Source0:        https://buildroot.org/downloads/buildroot-%{buildroot_ver}.tar.gz
 Source1:        mipsel64-n32.config
-Source2:        fixes-gcc15.patch
+Patch0:         fixes-sqlite3.patch
 
-BuildRequires:  perl-ExtUtils-MakeMaker perl-Thread-Queue perl-FindBin perl-English perl-IPC-Cmd
+BuildRequires:  perl(ExtUtils::MakeMaker) perl(Thread::Queue) perl(FindBin) perl(English) perl(IPC::Cmd) perl(Time::Piece)
 BuildRequires:	autoconf
 BuildRequires:	make ncurses-devel wget bc rsync
 BuildRequires:  gcc-c++
 BuildRequires:  zlib-devel
 BuildRequires:  make
+BuildRequires:  glibc-langpack-en
 Requires: glibc
 Requires: libgcc
 AutoReqProv: no
 
 %undefine _missing_build_ids_terminate_build
+%undefine __brp_mangle_shebangs
 %global debug_package %{nil}
 %global __strip /bin/true
 %global _build_id_links alldebug
@@ -46,7 +48,7 @@ shared libraries. Support for C and C++
 %prep
 %setup -q -c
 cd buildroot-%{buildroot_ver}
-patch -p1 < %{SOURCE2}
+%patch -P 0 -p1
 cp %{SOURCE1} .config
 
 %build
@@ -70,6 +72,10 @@ done
 /opt/buildroot-mipsel64-n32-uclibc/*
 
 %changelog
+* Mon Oct 05 2026 David Guillen Fandos <david@davidgf.net> - 2026.10.05-1
+- Bump to buildroot 2026.08
+- Add some extra packages and libs to the build
+
 * Mon Apr 21 2025 David Guillen Fandos <david@davidgf.net> - 2025.04.21-1
 - Bump to buildroot 2025.02
 

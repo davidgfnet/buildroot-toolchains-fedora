@@ -1,0 +1,15 @@
+diff --git a/package/sqlite/sqlite.mk b/package/sqlite/sqlite.mk
+index 5d0fdf4791..78fc40acc2 100644
+--- a/package/sqlite/sqlite.mk
++++ b/package/sqlite/sqlite.mk
+@@ -92,7 +92,7 @@ define SQLITE_CONFIGURE_CMDS
+ endef
+ 
+ define SQLITE_BUILD_CMDS
+-	$(TARGET_MAKE_ENV) $(MAKE) -C $(@D)
++	$(TARGET_MAKE_ENV) $(MAKE) LDFLAGS="$(TARGET_LDFLAGS)" -C $(@D)
+ endef
+ 
+ define SQLITE_INSTALL_STAGING_CMDS
+-- 
+2.43.0
